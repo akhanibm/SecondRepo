@@ -16,3 +16,14 @@ provider "aws" {
 resource "aws_sns_topic" "demo_topic" {
   name = "se-demo-test-topic"
 }
+
+resource "aws_dynamodb_table" "tfc_example_table" {
+  name         = "se-demo-table"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "LockID"
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+}
