@@ -1,4 +1,3 @@
-
 terraform {
   required_providers {
     aws = {
@@ -22,18 +21,18 @@ resource "aws_dynamodb_table" "tfc_example_table" {
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 
-  # 3. Define the EC2 Instance resource
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+}
+
+# Define the EC2 Instance resource at the root level
 resource "aws_instance" "my_web_server" {
-  ami           = "ami-0c7217cdde317cfec" # Replace with a valid AMI ID for your region
+  ami           = "ami-0c7217cdde317cfec" # Ensure this matches a valid Amazon Linux 2/2023 AMI in us-east-1
   instance_type = "t2.micro"
 
   tags = {
     Name = "Terraform-EC2-Example"
-  }
-}
-
-  attribute {
-    name = "LockID"
-    type = "S"
   }
 }
