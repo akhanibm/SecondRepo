@@ -1,0 +1,10 @@
+import "tfplan"
+
+# Ensure all EC2 instances are t3.micro
+main = rule {
+    all tfplan.resources.aws_instance as _, instances {
+        all instances as _, r {
+            r.applied.instance_type == "t3.micro"
+        }
+    }
+}
