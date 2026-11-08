@@ -30,7 +30,7 @@ resource "aws_dynamodb_table" "tfc_example_table" {
 # Define the EC2 Instance resource at the root level
 resource "aws_instance" "my_web_server" {
   ami           = "ami-0c7217cdde317cfec" # Ensure this matches a valid Amazon Linux 2/2023 AMI in us-east-1
-  instance_type = "t3.micro"
+  instance_type = "t4g.micro"
 
   tags = {
     Name = "Terraform-EC2-Example"
