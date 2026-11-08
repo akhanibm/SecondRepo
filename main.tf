@@ -23,16 +23,6 @@ resource "aws_dynamodb_table" "tfc_example_table" {
   hash_key     = "LockID"
 
 
-# 3. Define the EC2 Instance resource
-resource "aws_instance" "my_web_server" {
-  ami           = "ami-0c7217cdde317cfec" # Replace with a valid AMI ID for your region
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "Terraform-EC2-Example"
-  }
-}
-
   attribute {
     name = "LockID"
     type = "S"
